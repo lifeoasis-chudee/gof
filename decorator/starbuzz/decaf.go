@@ -3,25 +3,37 @@ package starbuzz
 import "fmt"
 
 type Decaf struct {
-	size Size
+	size    Size
+	options map[string]int32
 }
 
 func NewDecaf() Beverage {
-	return &Decaf{}
+	return &Decaf{
+		size:    TALL,
+		options: make(map[string]int32),
+	}
 }
 
-func (d *Decaf) getDescription() string {
-	return fmt.Sprintf("디카페인 커피 %s", d.size)
+func (b *Decaf) getDescription() string {
+	return fmt.Sprintf("디카페인 커피 %s", b.size)
 }
 
-func (d *Decaf) cost() float32 {
+func (b *Decaf) cost() float32 {
 	return 1.05
 }
 
-func (d *Decaf) setSize(size Size) {
-	d.size = size
+func (b *Decaf) setSize(size Size) {
+	b.size = size
 }
 
-func (d *Decaf) getSize() Size {
-	return d.size
+func (b *Decaf) getSize() Size {
+	return b.size
+}
+
+func (b *Decaf) getOptions() map[string]int32 {
+	return b.options
+}
+
+func (b *Decaf) setOptions(name string) {
+	b.options[name] = b.options[name] + 1
 }

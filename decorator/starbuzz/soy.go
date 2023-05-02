@@ -3,13 +3,13 @@ package starbuzz
 import "fmt"
 
 type Soy struct {
-	beverage Beverage
+	CondimentDecorator
 }
 
 func NewSoy(beverage Beverage) Beverage {
-	return &Soy{
-		beverage: beverage,
-	}
+	b := CondimentDecorator{beverage}
+	b.setOptions("soy")
+	return &Soy{b}
 }
 
 func (d *Soy) getDescription() string {
@@ -29,12 +29,4 @@ func (d *Soy) cost() float32 {
 	}
 
 	return cost
-}
-
-func (d *Soy) setSize(size Size) {
-	d.beverage.setSize(size)
-}
-
-func (d *Soy) getSize() Size {
-	return d.beverage.getSize()
 }

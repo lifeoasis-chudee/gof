@@ -5,13 +5,13 @@ import (
 )
 
 type Mocha struct {
-	beverage Beverage
+	CondimentDecorator
 }
 
 func NewMocha(beverage Beverage) Beverage {
-	return &Mocha{
-		beverage: beverage,
-	}
+	b := CondimentDecorator{beverage}
+	b.setOptions("mocha")
+	return &Mocha{b}
 }
 
 func (d *Mocha) getDescription() string {
@@ -31,12 +31,4 @@ func (d *Mocha) cost() float32 {
 	}
 
 	return cost
-}
-
-func (d *Mocha) setSize(size Size) {
-	d.beverage.setSize(size)
-}
-
-func (d *Mocha) getSize() Size {
-	return d.beverage.getSize()
 }

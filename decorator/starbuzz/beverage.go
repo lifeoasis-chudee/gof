@@ -13,4 +13,6 @@ type Beverage interface {
 	cost() float32
 	setSize(size Size)
 	getSize() Size
+	getOptions() map[string]int32
+	setOptions(name string)
 }

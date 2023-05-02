@@ -3,13 +3,13 @@ package starbuzz
 import "fmt"
 
 type Whip struct {
-	beverage Beverage
+	CondimentDecorator
 }
 
 func NewWhip(beverage Beverage) Beverage {
-	return &Whip{
-		beverage: beverage,
-	}
+	b := CondimentDecorator{beverage}
+	b.setOptions("whip")
+	return &Whip{b}
 }
 
 func (d *Whip) getDescription() string {
@@ -29,12 +29,4 @@ func (d *Whip) cost() float32 {
 	}
 
 	return cost
-}
-
-func (d *Whip) setSize(size Size) {
-	d.beverage.setSize(size)
-}
-
-func (d *Whip) getSize() Size {
-	return d.beverage.getSize()
 }

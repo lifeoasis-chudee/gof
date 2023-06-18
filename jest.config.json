@@ -1,0 +1,6 @@
+{
+  "verbose": false,
+  // console.log 너무 장활하게 나오는 이슈
+  // https://github.com/jestjs/jest/issues/10322
+  "setupFilesAfterEnv": ["./config.js"]
+}
